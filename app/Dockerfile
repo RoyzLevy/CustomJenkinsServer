@@ -1,5 +1,5 @@
 FROM python:alpine3.17
 
-COPY main.py main.py
+COPY app/main.py app/main.py
 
-CMD [ "python3", "main.py"]
+CMD [ "python3", "app/main.py"]
