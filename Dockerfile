@@ -8,10 +8,8 @@ COPY Jenkinsfile /var/jenkins_home/
 COPY jobs /var/jenkins_home/jobs/
 
 # RUN /usr/local/bin/install-plugins.sh <plugins>
-if [ $(java -jar jenkins-cli.jar -s http://localhost:8080/ get-job triggerpythonjob) ]; then
-    echo "Job already exists"
-else
-    echo "Job does not exist, creating it"
-    # RUN echo "Jenkins.instance.createProjectFromXML(\"triggerpythonjob\", new File(\"/var/jenkins_home/jobs/triggerpythonjob/config.xml\").text)" | java -jar jenkins-cli.jar -s http://localhost:8080/ groovy =
-    java -jar jenkins-cli.jar -s http://localhost:8080/ create-job triggerpythonjob < config.xml
-fi
+# RUN echo "Jenkins.instance.createProjectFromXML(\"triggerpythonjob\", new File(\"/var/jenkins_home/jobs/triggerpythonjob/config.xml\").text)" | java -jar jenkins-cli.jar -s http://localhost:8080/ groovy =
+
+RUN if ! java -jar jenkins-cli.jar -s http://localhost:8080/ get-job <job_name> ; then \
+      java -jar jenkins-cli.jar -s http://localhost:8080/ create-job triggerpythonjob < config.xml; \
+    fi
