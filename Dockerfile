@@ -7,7 +7,7 @@ ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 # RUN java -jar /usr/share/jenkins/cli.jar -s http://localhost:8080/ login --username admin --password admin 
 
 COPY Jenkinsfile /var/jenkins_home/
-# COPY jobs /var/jenkins_home/jobs/
+COPY jobs ./var/jenkins_home/jobs/
 COPY setup_job.sh /usr/local/bin/
 RUN chown -R jenkins:jenkins /var/jenkins_home
 
