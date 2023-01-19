@@ -16,13 +16,13 @@ services:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
       - ${HOST_DOCKER_PATH}:/usr/bin/docker
-  # jenkins-cli:
-  #   networks:
-  #     - jenkins_network
-  #   build:
-  #     context: .
-  #     dockerfile: CLIDockerfile
-  #   depends_on:
-  #     - jenkins-server
+  jenkins-cli:
+    networks:
+      - jenkins_network
+    build:
+      context: .
+      dockerfile: CLIDockerfile
+    depends_on:
+      - jenkins-server
 volumes:
   jenkins_home:
