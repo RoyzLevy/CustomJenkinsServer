@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y curl
 COPY jobs/ /usr/local/bin/jobs/
 
 COPY wait-for-it.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/wait-for-it.sh
 RUN /usr/local/bin/wait-for-it.sh jenkins-server:8080 -t 60
 
 # Download Jenkins CLI
