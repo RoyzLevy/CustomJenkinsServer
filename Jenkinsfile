@@ -1,18 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Job DSL') {
+        stage('print message') {
             steps {
-                jobDsl script: '''
-                job("my-job") {
-                  description("run python script upon merge")
-                    steps {
-                        shell('python main.py')
-                        shell('docker build -t pythonprint -f app/Dockerfile .')
-                        shell('docker run pythonprint')
-                    }
-                }
-                '''
+                // sh 'python main.py'
+                sh 'docker build -t pythonprint -f app/Dockerfile .'
+                sh 'docker run pythonprint'
             }
         }
     }
