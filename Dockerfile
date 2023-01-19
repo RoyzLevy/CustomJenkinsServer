@@ -15,4 +15,4 @@ COPY setup_job.sh /usr/local/bin/
 
 # RUN if ! java -jar jenkins-cli.jar -s http://localhost:8080/ get-job triggerpythonjob ; then java -jar jenkins-cli.jar -s http://localhost:8080/ create-job triggerpythonjob < /var/jenkins_home/jobs/triggerpythonjob/config.xml && echo "Job created"; fi
 
-CMD ["/usr/local/bin/setup_job.sh"]
+CMD ["sh", "/usr/local/bin/setup_job.sh"]
