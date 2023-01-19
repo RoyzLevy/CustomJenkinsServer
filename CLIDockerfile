@@ -1,0 +1,12 @@
+FROM openjdk:11-jre-slim
+
+RUN apt-get update && apt-get install -y curl
+
+# Download Jenkins CLI
+RUN curl --silent --location http://jenkins-server:8080/jnlpJars/jenkins-cli.jar -o /usr/local/bin/jenkins-cli.jar
+
+# Copy job config files
+COPY jobs/ /usr/local/bin/jobs/
+
+# Run Jenkins CLI command to create job
+CMD java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth admin:admin create-job triggerpythonjob < /usr/local/bin/jobs/config.xml
