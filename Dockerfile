@@ -4,7 +4,7 @@ ENV JENKINS_USER admin
 ENV JENKINS_PASS admin
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
-RUN java -jar /usr/share/jenkins/cli.jar -s http://localhost:8080/ login --username admin --password admin 
+# RUN java -jar /usr/share/jenkins/cli.jar -s http://localhost:8080/ login --username admin --password admin 
 
 COPY Jenkinsfile /var/jenkins_home/
 COPY jobs /var/jenkins_home/jobs/
