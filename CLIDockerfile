@@ -1,0 +1,12 @@
+FROM openjdk:11-jre-slim
+
+RUN apt-get update && apt-get install -y curl
+
+# Copy job config files
+COPY jobs /var/jenkins_home/jobs/
+
+COPY setup_job.sh /var/jenkins_home/setup_job.sh
+
+RUN chmod +x /var/jenkins_home/setup_job.sh
+
+CMD ["sh", "/var/jenkins_home/setup_job.sh"]
