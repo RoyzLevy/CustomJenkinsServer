@@ -9,6 +9,7 @@ ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 COPY Jenkinsfile /var/jenkins_home/
 COPY jobs /var/jenkins_home/jobs/
 COPY setup_job.sh /usr/local/bin/
+RUN chown -R jenkins:jenkins /var/jenkins_home
 
 # RUN echo "Jenkins.instance.createProjectFromXML(\"triggerpythonjob\", new File(\"/var/jenkins_home/jobs/triggerpythonjob/config.xml\").text)" | java -jar jenkins-cli.jar -s http://localhost:8080/ groovy =
 # RUN curl --silent --location http://localhost:8080/jnlpJars/jenkins-cli.jar -o /usr/share/jenkins/cli.jar
