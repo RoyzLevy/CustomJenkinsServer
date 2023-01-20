@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y curl
 COPY jobs/ /var/jenkins_home/jobs/
 COPY setup_job.sh /var/jenkins_home/setup_job.sh
 
-USER ROOT
 RUN chmod +x /var/jenkins_home/setup_job.sh
 
 # COPY wait-for-it.sh /usr/local/bin/
