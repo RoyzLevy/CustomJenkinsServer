@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.154-jdk11
+FROM jenkins/jenkins:2.327-jdk11
 
 ENV JENKINS_USER admin
 ENV JENKINS_PASS admin
