@@ -15,7 +15,7 @@ java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth ad
 java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth admin:admin install-plugin email-ext
 java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth admin:admin install-plugin email-ext
 
-sleep 120
-curl http://jenkins-server:8080/safeRestart
+sleep 60
+java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth admin:admin restart
 
 # java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth admin:admin create-job triggerpythonjob < /var/jenkins_home/jobs/triggerpythonjob/config.xml && echo "Job created"
