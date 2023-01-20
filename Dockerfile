@@ -13,7 +13,7 @@ COPY Jenkinsfile /var/jenkins_home/
 
 USER jenkins
 
-CMD ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
+CMD ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh", "--httpListenAddress=0.0.0.0", "--httpPort=8080"]
 
 # RUN echo "Jenkins.instance.createProjectFromXML(\"triggerpythonjob\", new File(\"/var/jenkins_home/jobs/triggerpythonjob/config.xml\").text)" | java -jar /var/jenkins_home/jenkins-cli.jar -s http://localhost:8080/ groovy =
 
