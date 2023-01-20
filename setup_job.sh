@@ -9,7 +9,7 @@ java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth ad
 # cd $JENKINS_HOME/plugins
 # curl -O http://updates.jenkins-ci.org/download/plugins/cobertura.hpi
 
-
+# java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth admin:admin install-plugin workflow-job
 java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth admin:admin install-plugin git
 curl http://jenkins-server:8080/reload
 
