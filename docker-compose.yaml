@@ -1,13 +1,37 @@
 version: '3'
+networks:
+  jenkins_network:
+    driver: bridge
+
 services:
-  jenkins:
-    build: .
-    restart: always
+  jenkins-server:
+    environment:
+      PORT: 8080
+    networks:
+      - jenkins_network
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     volumes:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
       - ${HOST_DOCKER_PATH}:/usr/bin/docker
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://jenkins-server:8080/"]
+      interval: 30s # Interval between health checks.
+      timeout: 30s # Timeout for each health checking.
+      retries: 20 # Hou many times retries.
+      start_period: 60s # Estimated time to boot.
+  jenkins-cli:
+    networks:
+      - jenkins_network
+    build:
+      context: .
+      dockerfile: CLIDockerfile
+    depends_on:
+      jenkins-server:
+        condition: service_healthy
 volumes:
   jenkins_home:
