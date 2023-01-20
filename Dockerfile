@@ -12,6 +12,7 @@ COPY Jenkinsfile /var/jenkins_home/
 # COPY setup_job.sh /usr/local/bin/
 
 USER jenkins
+RUN /usr/local/bin/install-plugins.sh workflow-job github python
 
 # CMD ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh", "--httpListenAddress=0.0.0.0", "--httpPort=8080"]
 
