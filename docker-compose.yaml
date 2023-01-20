@@ -1,14 +1,14 @@
 version: '3'
-# networks:
-#   jenkins_network:
-#     driver: bridge
+networks:
+  jenkins_network:
+    driver: bridge
 
 services:
   jenkins-server:
     environment:
       PORT: 8080
-    # networks:
-    #   - jenkins_network
+    networks:
+      - jenkins_network
     build:
       context: .
       dockerfile: Dockerfile
@@ -19,12 +19,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${HOST_DOCKER_PATH}:/usr/bin/docker
   jenkins-cli:
-    # networks:
-    #   - jenkins_network
+    networks:
+      - jenkins_network
     build:
       context: .
       dockerfile: CLIDockerfile
-    # depends_on:
-    #   - jenkins-server
+    depends_on:
+      - jenkins-server
 volumes:
   jenkins_home:
