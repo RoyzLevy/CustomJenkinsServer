@@ -4,7 +4,7 @@
 
 curl --silent --location http://jenkins-server:8080/jnlpJars/jenkins-cli.jar -o /usr/local/bin/jenkins-cli.jar
 
-java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth admin:admin list-plugins
+java -jar /usr/local/bin/jenkins-cli.jar -s http://jenkins-server:8080/ -auth admin:admin list-available-plugins
 
 # cd $JENKINS_HOME/plugins
 # curl -O http://updates.jenkins-ci.org/download/plugins/cobertura.hpi
