@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y curl
 # Copy job config files
 COPY jobs/ /var/jenkins_home/jobs/
 
-COPY jenkins-cli.jar /usr/local/bin/jenkins-cli.jar
+# COPY jenkins-cli.jar /usr/local/bin/jenkins-cli.jar
 
 COPY setup_job.sh /var/jenkins_home/setup_job.sh
 
