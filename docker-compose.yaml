@@ -18,6 +18,12 @@ services:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
       - ${HOST_DOCKER_PATH}:/usr/bin/docker
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://jenkins-server:8080/"]
+      interval: 5s # Interval between health checks.
+      timeout: 5s # Timeout for each health checking.
+      retries: 20 # Hou many times retries.
+      start_period: 10s # Estimated time to boot.
   jenkins-cli:
     networks:
       - jenkins_network
