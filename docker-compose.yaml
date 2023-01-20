@@ -24,8 +24,7 @@ services:
     build:
       context: .
       dockerfile: CLIDockerfile
-    depends_on:
-      jenkins-server:
-        condition: service_healthy
+    # depends_on:
+    #   - jenkins-server
 volumes:
   jenkins_home:
