@@ -8,7 +8,7 @@ python_job_config_path="/var/jenkins_home/jobs/triggerpythonjob/config.xml"
 curl --silent --location "${jenkins_url}/jnlpJars/jenkins-cli.jar" -o "${jenkins_cli_jar_path}"
 
 # create the trigger job based on the config file
-java -jar "${jenkins_cli_jar_path}" -s "${jenkins_url}" -auth admin:admin create-job triggerpythonjob < "${python_job_config_path}"
+java -jar "${jenkins_cli_jar_path}" -s "${jenkins_url}" -auth $1:$2 create-job triggerpythonjob < "${python_job_config_path}"
 
 # build the trigger job
 java -jar "${jenkins_cli_jar_path}" -s "${jenkins_url}" build triggerpythonjob
