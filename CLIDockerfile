@@ -2,6 +2,7 @@ FROM openjdk:11-jre-slim
 
 ENV JENKINS_USER $JENKINS_SERVER_USERNAME
 ENV JENKINS_PASS $JENKINS_SERVER_PASSWORD
+ENV JENKINS_SERVER $JENKINS_SERVER
 
 RUN apt-get update && apt-get install -y curl
 
@@ -10,4 +11,4 @@ COPY setup_job.sh /var/jenkins_home/setup_job.sh
 
 RUN chmod +x /var/jenkins_home/setup_job.sh
 
-CMD ["sh", "/var/jenkins_home/setup_job.sh", $JENKINS_SERVER_USERNAME, $JENKINS_SERVER_PASSWORD]
+CMD ["sh", "/var/jenkins_home/setup_job.sh", $JENKINS_SERVER_USERNAME, $JENKINS_SERVER_PASSWORD, $JENKINS_SERVER]
