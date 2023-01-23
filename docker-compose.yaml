@@ -4,7 +4,7 @@ networks:
     driver: bridge
 
 services:
-  jenkins-server:
+  $JENKINS_SERVER:
     environment:
       PORT: 8080
     networks:
@@ -19,7 +19,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${HOST_DOCKER_PATH}:/usr/bin/docker
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://jenkins-server:8080/"]
+      test: ["CMD", "curl", "-f", "http://$JENKINS_SERVER:8080/"]
       interval: 30s # Interval between health checks.
       timeout: 30s # Timeout for each health checking.
       retries: 20 # Hou many times retries.
