@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 jenkins_url="http://jenkins-server:8080"
 jenkins_cli_jar_path="usr/local/bin/jenkins-cli.jar"
