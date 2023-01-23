@@ -1,6 +1,6 @@
 #!/bin/bash
 
-jenkins_url="http://${3}:8080"
+jenkins_url="http://jenkins-server:8080"
 jenkins_cli_jar_path="usr/local/bin/jenkins-cli.jar"
 python_job_config_path="/var/jenkins_home/jobs/triggerpythonjob/config.xml"
 
